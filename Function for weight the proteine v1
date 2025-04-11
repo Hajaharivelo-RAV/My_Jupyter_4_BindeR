@@ -1,0 +1,34 @@
+weightDa <- c(0, 1, 2, 3, 4, 5)
+weightkDa <- weightDa/10
+
+mo <- data.frame(
+    
+  aa = c("*", "A", "M", "E", "R", "D"),
+  weightDa,
+  weightkDa
+)
+
+print(mo)
+summary(mo)
+print(mo[,'aa'])
+
+
+
+protein_weight <- function(sequence) {
+  total_weight_kDa <- 0
+  sequence_vector <- unlist(strsplit(sequence, "")) # Split the sequence into individual amino acids
+
+  for (amino_acid in sequence_vector) {
+    if (amino_acid %in% mo$aa) {
+      weight <- mo$weightkDa[mo$aa == amino_acid]
+      total_weight_kDa <- total_weight_kDa + weight
+    } else {
+      print(paste("Warning: Amino acid '", amino_acid, "' not found in weight table."))
+    }
+  }
+  return(total_weight_kDa)
+}
+
+protein_weight("MDR")
+protein_weight("A*RD")
+protein_weight("*AMERD")
