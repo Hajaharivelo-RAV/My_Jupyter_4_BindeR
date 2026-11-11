@@ -1,0 +1,24 @@
+calculate_bmi <- function(weight, height) {
+  bmi <- weight / (height^2)  # Formula for BMI
+  return(bmi)
+}
+
+calculate_bmi(70, 1.75)
+calculate_bmi(69, 1.69)
+calculate_bmi(71, 1.69)
+
+
+calculate_bmr<- function(weight, height, age, sexe){
+  msj<- ((10*weight)+(6.25*height)-(5*age))
+  if(sexe== "male"){
+    bmr=(msj+5)
+  }else if(sexe=="female"){
+    bmr=(msj-161)
+  }
+  
+  return(bmr)
+}
+
+calculate_bmr(69, 169, 29, "male")
+
+calculate_bmr(60, 156,27, "female")
